@@ -268,7 +268,27 @@ def inicio():
             res=multiplicar_matrices(num5,num6)
         else:    
             print('el numero de columnas de la matriz 1 es diferente del numero de filas de la matriz 2')
-            
+    elif ope=='norma':
+            num1=stdin.readline().split()
+            num3=[]
+            for i in num1:
+                i=i.replace('(','')
+                i=i.replace(')','')
+                i=i.replace(',',' ')
+                i=i.split()
+                num3.append(i)        
+            print(num3)
+            norma(num3)
+def norma(num3):
+    res=[]
+    for i in num3:
+        tempo=potencia(i)
+        res.append(tempo)    
+    print(res)
+
+def potencia(num5):
+    res=[(int(num5[0])**2)-(int(num5[1])**2),2*int(num5[0])*int(num5[1])]
+    return res
 def multiplicar_matrices(num5,num6):
     res=[]
     for i in num5:
@@ -400,16 +420,19 @@ def multiplicar(n1,n2,n3,n4):
     print(res)
     return res
 def dividir():
-    n1=int(num1[0])
-    n2=int(num1[1])
-    n3=int(num2[0])
-    n4=int(num2[1])
-    cont=conjugado(n3,n4)
-    r1=multiplicar(n1,n2,cont[0],cont[1])
-    r2=multiplicar(n3,n4,cont[0],cont[1])
-    res=[round((r1[0]/r2[0]),3),round((r1[1]/r2[0]),3)]
-    print(res)
-    return res
+    if num2[0]==0 and num2[1]==0:
+        print("no se puede dividir entre cero")
+    else:    
+        n1=int(num1[0])
+        n2=int(num1[1])
+        n3=int(num2[0])
+        n4=int(num2[1])
+        cont=conjugado(n3,n4)
+        r1=multiplicar(n1,n2,cont[0],cont[1])
+        r2=multiplicar(n3,n4,cont[0],cont[1])
+        res=[round((r1[0]/r2[0]),3),round((r1[1]/r2[0]),3)]
+        print(res)
+        return res
 def conjugado(n1,n2):
     res=[]
     res.append(n1)
